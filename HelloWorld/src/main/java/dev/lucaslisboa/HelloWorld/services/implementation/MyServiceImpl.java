@@ -29,7 +29,7 @@ public class MyServiceImpl implements MyService
 
     @Override
     public Device getDeviceByMac(String macAddress) {
-        return null;
+        return getDeviceByMac(macAddress);
     }
 
     @Override

@@ -15,40 +15,38 @@ public class MyEndpoints
     private MyService myService;
 
     @GetMapping  //http://localhost:8080/test
-    public List<Device> myFirstGet()
-    {
+    public List<Device> myFirstGet(){
         return myService.getAllDevices();
     }
 
     @GetMapping("/{mac}")  //http://localhost:8080/test/<id>
-    public String endpointWithParameter(@PathVariable Integer mac)
-    {
-        System.out.println(mac);      //  /test/5
-        return "Hello World " + mac;
+    public Device endpointWithParameter(@PathVariable String mac){
+        System.out.println(myService.getDeviceByMac(mac));
+        return myService.getDeviceByMac(mac);
     }
 
     @GetMapping("/v1")  //http://localhost:8080/test/v1?value=<?>
-    public String endpointWithQuery(@RequestParam Integer value)
-    {
-        System.out.println(value);    //  /test/v1?value=4
+    public String endpointWithQuery(@RequestParam Integer value){
+        System.out.println(value);
         return "Hello World " + value;
     }
 
-    @PostMapping
-    public Device myFirstPost(@RequestBody Device device)  //http://localhost:8080/test/
-    {
+    @PostMapping   //http://localhost:8080/test/
+    public Device myFirstPost(@RequestBody Device device){
         return myService.save(device);
     }
 
-//    @PutMapping("/{mac}")
-//    public Device myFirstPut(@RequestBody Device device, @PathVariable String mac)
-//    {
-//        myService.getDeviceByMac(device.getBrand())
-//    }
+    @PutMapping("/{mac}")
+    public Device myFirstPut(@RequestBody Device device, @PathVariable String mac) {
+        myService.getDeviceByMac(mac).setName(device.getName());
+        myService.getDeviceByMac(mac).setBrand(device.getBrand());
+        myService.getDeviceByMac(mac).setWifi(device.getWifi());
+
+        return device;
+    }
 
     @DeleteMapping
-    public Device myFirsDelete(@RequestParam Device device)
-    {
+    public Device myFirsDelete(@RequestBody Device device){
         return myService.delete(device);
     }
 }
