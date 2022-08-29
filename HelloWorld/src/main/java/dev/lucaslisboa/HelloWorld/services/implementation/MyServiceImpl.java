@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MyServiceImpl implements MyService
@@ -29,7 +30,9 @@ public class MyServiceImpl implements MyService
 
     @Override
     public Device getDeviceByMac(String macAddress) {
-        return getDeviceByMac(macAddress);
+        Optional<Device> first = myDevices.stream().filter(device -> device.getMacAddress().equalsIgnoreCase(macAddress)).findFirst();
+        Device device = first.get();
+        return device;
     }
 
     @Override
@@ -37,17 +40,26 @@ public class MyServiceImpl implements MyService
         return myDevices;
     }
 
-    public Device delete(Device device)
-    {
-        boolean contains = myDevices.contains(device);
 
-        if(contains) {
-            myDevices.remove(device);
-        } else{
-            System.out.println("n tem");
-            throw new RuntimeException();
-        }
+//    public Device delete(Device device)
+//    {
+//        boolean contains = myDevices.contains(device);
+//
+//        if(contains) {
+//            myDevices.remove(device);
+//        } else{
+//            System.out.println("n tem");
+//            throw new RuntimeException();
+//        }
+//
+//        return device;
+//    }
 
-        return device;
+    @Override
+    public List<Device> delete(String macAddress){
+        Device device = getDeviceByMac(macAddress);
+        myDevices.remove(device);
+        return myDevices;
     }
+
 }

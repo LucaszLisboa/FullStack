@@ -9,7 +9,5 @@ public interface MyService
     Device save(Device device);
     Device getDeviceByMac(String macAddress);
     List<Device> getAllDevices();
-
-    Device delete(Device device);
-
+    List<Device> delete(String macAddress);
 }

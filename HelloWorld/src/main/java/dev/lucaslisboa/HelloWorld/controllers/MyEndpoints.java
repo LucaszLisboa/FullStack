@@ -45,8 +45,8 @@ public class MyEndpoints
         return device;
     }
 
-    @DeleteMapping
-    public Device myFirsDelete(@RequestBody Device device){
-        return myService.delete(device);
+    @DeleteMapping("/{macAddress}")   //http://localhost:8080/test
+    public void myFirstDelete(@PathVariable String macAddress) {
+        myService.delete(macAddress);
     }
 }
