@@ -13,18 +13,35 @@ export class ElementsHomeComponent implements OnInit {
       title: 'Fechadura Zamac',
       imageUrl: 'assets/Zamac1.png',
       description: 'Fechadura Zamac Ascot Grafite Polido Externa'
+
     },
     {
       id: 2,
-      title: 'Fechadura Zamac',
-      imageUrl: 'assets/Zamac1.png',
-      description: 'Fechadura Zamac Ascot Grafite Polido Externa'
+      title: 'Fechadura Karli',
+      imageUrl: 'assets/karli1.png',
+      description: 'Fechadura Karli em Zamac Preto Texturizado para Banheiro'
+
     },
     {
-      id: 2,
-      title: 'Fechadura Zamac',
-      imageUrl: 'assets/Zamac1.png',
-      description: 'Fechadura Zamac Ascot Grafite Polido Externa'
+      id: 3,
+      title: 'Fechadura Opera',
+      imageUrl: 'assets/opera1.png',
+      description: 'Fechadura Opera Preto Texturizado para Banheiro'
+
+    },
+    {
+      id: 4,
+      title: 'Fechadura BMW',
+      imageUrl: 'assets/bmw1.png',
+      description: 'Fechadura BMW Seattle Bronze Oxidado para Banheiro'
+  
+    },
+    {
+      id: 5,
+      title: 'Fechadura Karli',
+      imageUrl: 'assets/karli2.png',
+      description: 'Fechadura Karli em Zamac Corten para Banheiro'
+
     }
   ]
 
@@ -54,5 +71,6 @@ interface PADOInterface{
   title: string;
   imageUrl: string;
   description: string;
+
 
 }

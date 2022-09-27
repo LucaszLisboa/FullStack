@@ -1,16 +1,30 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img
+        src="assets\logo_pado.png"
+        class="logo"
+        height="20"
+        alt=""
+        loading="lazy"
+      />
+    </a>
+  </div>
+</nav>
+
 <div class="ui secondary pointing menu">
   <a routerLink="/home" routerLinkActive="active" class="item">
     Home
   </a>
-  <a routerLink="/cards" routerLinkActive="active" class="item">
+  <!-- <a routerLink="/cards" routerLinkActive="active" class="item">
     Cards
-  </a>
+  </a> -->
   <a routerLink="/elements" routerLinkActive="active" class="item">
     Elements
   </a>
 </div>
 
-<div class="ui segment">
+<div class="ui raised segment">
   <router-outlet></router-outlet>
 </div>
 
