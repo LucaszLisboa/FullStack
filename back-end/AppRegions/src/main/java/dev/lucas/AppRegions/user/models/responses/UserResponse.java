@@ -1,20 +1,16 @@
-package dev.lucas.AppRegions.user.models;
+package dev.lucas.AppRegions.user.models.responses;
 
-public class UserRegister {
-    private String userId;
+public class UserResponse {
     private String userName;
     private String userEmail;
-    private String userPassword;
-
     private String userUF;
     private String userCity;
 
-    public UserRegister() {
+    private boolean isLogged;
+    private String token;
 
-    }
+    public UserResponse() {
 
-    public String getUserId() {
-        return userId;
     }
 
     public String getUserName() {
@@ -25,10 +21,6 @@ public class UserRegister {
         return userEmail;
     }
 
-    public String getUserPassword() {
-        return userPassword;
-    }
-
     public String getUserUF() {
         return userUF;
     }
@@ -37,9 +29,14 @@ public class UserRegister {
         return userCity;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public String getToken() {
+        return token;
     }
+
+    public boolean isLogged() {
+        return isLogged;
+    }
+
 
     public void setUserName(String userName) {
         this.userName = userName;
@@ -47,10 +44,6 @@ public class UserRegister {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
     }
 
     public void setUserUF(String userUF) {
@@ -61,15 +54,23 @@ public class UserRegister {
         this.userCity = userCity;
     }
 
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public void setLogged(boolean logged) {
+        isLogged = logged;
+    }
+
     @Override
     public String toString() {
         return "UserResponse{" +
-                "userId='" + userId + '\'' +
                 ", userName='" + userName + '\'' +
                 ", userEmail='" + userEmail + '\'' +
-                ", userPassword='" + userPassword + '\'' +
                 ", userUF='" + userUF + '\'' +
                 ", userCity='" + userCity + '\'' +
+                ", isLogged='" + isLogged + '\'' +
+                ", token='" + token + '\'' +
                 '}';
     }
 }

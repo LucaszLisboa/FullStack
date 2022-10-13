@@ -1,11 +1,8 @@
-package dev.lucas.AppRegions.user.models;
+package dev.lucas.AppRegions.user.models.requests;
 
-public class EditRequest {
+public class UserUpdateUsernameRequest {
 
-    String userName;
-
-    public EditRequest() {
-    }
+    private String userName;
 
     public String getUserName() {
         return userName;
@@ -17,7 +14,7 @@ public class EditRequest {
 
     @Override
     public String toString() {
-        return "EditRequest{" +
+        return "UpdateRequest{" +
                 "userName='" + userName + '\'' +
                 '}';
     }

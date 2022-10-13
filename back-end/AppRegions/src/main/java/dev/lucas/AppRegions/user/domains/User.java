@@ -7,20 +7,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User {
     @Id
     private String id;
-    private String userId;
     private String userName;
     private String userEmail;
     private String userPassword;
-
     private String userUF;
     private String userCity;
+    private boolean isLogged;
+    private String token;
 
     public User() {
 
-    }
-
-    public String getUserId() {
-        return userId;
     }
 
     public String getUserName() {
@@ -43,9 +39,14 @@ public class User {
         return userCity;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public String getToken() {
+        return token;
     }
+
+    public boolean isLogged() {
+        return isLogged;
+    }
+
 
     public void setUserName(String userName) {
         this.userName = userName;
@@ -66,5 +67,15 @@ public class User {
     public void setUserCity(String userCity) {
         this.userCity = userCity;
     }
+
+    public void setLogged(boolean logged) {
+        isLogged = logged;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+
 
 }

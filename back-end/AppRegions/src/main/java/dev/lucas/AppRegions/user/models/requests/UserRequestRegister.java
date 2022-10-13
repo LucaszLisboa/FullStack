@@ -1,14 +1,13 @@
-package dev.lucas.AppRegions.user.models;
+package dev.lucas.AppRegions.user.models.requests;
 
-public class UserRequest {
+public class UserRequestRegister {
     private String userName;
     private String userEmail;
     private String userPassword;
-
     private String userUF;
     private String userCity;
 
-    public UserRequest() {
+    public UserRequestRegister() {
 
     }
 
