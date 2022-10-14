@@ -10,6 +10,7 @@ import org.springframework.web.socket.handler.AbstractWebSocketHandler;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class ChatRoom extends AbstractWebSocketHandler {
 
@@ -20,9 +21,19 @@ public class ChatRoom extends AbstractWebSocketHandler {
         System.out.println("NEW SESSION CREATED");
         sessionList.add(session);
 
-        session.sendMessage(new TextMessage("Welcome to the chat room!" + " Your user is: " + session.getAttributes().get("user").toString()));
+        session.sendMessage(new TextMessage("{\"user\":\" "
+                + session.getAttributes().get("user").toString()
+                + "\",\"message\":\" " + getRandomMessage() +" \"}"));
+
 
         super.afterConnectionEstablished(session);
+    }
+
+    private String getRandomMessage()
+    {
+        String[] messages = {"Cai de paraquedas no servidor!", "To na area", "É hora do jogo!"};
+        Random random = new Random();
+        return messages[random.nextInt(messages.length)];
     }
 
 
@@ -36,7 +47,7 @@ public class ChatRoom extends AbstractWebSocketHandler {
         if (padoLabsMessage.getUser().equalsIgnoreCase(""))
         {
             for(WebSocketSession targetSession: sessionList){
-                targetSession.sendMessage(new TextMessage(mySession.getAttributes().get("user").toString() + ": " + padoLabsMessage.getMessage()));
+                targetSession.sendMessage(new TextMessage("{\"user\":\" " + mySession.getAttributes().get("user").toString() + " [GLOBAL]" + "\",\"message\":\" " + padoLabsMessage.getMessage() +" \"}"));
             }
         }
 
@@ -44,7 +55,7 @@ public class ChatRoom extends AbstractWebSocketHandler {
         {
             if (targetSession.getAttributes().get("user").toString().equalsIgnoreCase(padoLabsMessage.getUser()))
             {
-                targetSession.sendMessage( new TextMessage(mySession.getAttributes().get("user").toString() + ": " + padoLabsMessage.getMessage()));
+                targetSession.sendMessage(new TextMessage("{\"user\":\" " + mySession.getAttributes().get("user").toString() + " ["+ targetSession.getAttributes().get("user") + "]" + "\",\"message\":\" " + padoLabsMessage.getMessage() +" \"}"));
             }
         }
 
